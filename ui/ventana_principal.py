@@ -9,7 +9,7 @@ from .temas import TemaColores, crear_listbox_personalizado
 class VentanaPrincipal:
     def __init__(self, root):
         self.root = root
-        self.root.title("🖥️ Configurador Integral NFS (Master & Cliente)")
+        self.root.title("Configurador Integral NFS (Master & Cliente)")
         self.root.geometry("1000x750")
         self.root.configure(bg=TemaColores.COLOR_FONDO_PRINCIPAL)
         
@@ -40,15 +40,15 @@ class VentanaPrincipal:
         self.frame_master = ttk.Frame(self.notebook, padding="10")
         self.frame_cliente = ttk.Frame(self.notebook, padding="10")
 
-        self.notebook.add(self.frame_master, text='👑 Servidor (Master)')
-        self.notebook.add(self.frame_cliente, text='🖥️ Cliente')
+        self.notebook.add(self.frame_master, text='Servidor (Master)')
+        self.notebook.add(self.frame_cliente, text='Cliente')
 
         # Construir la interfaz de cada pestaña
         self._crear_widgets_master()
         self._crear_widgets_cliente()
         
         # Mostrar estado de la máquina
-        estado = "👑 SERVIDOR MASTER DETECTADO" if self.es_servidor_master else "🖥️ MODO CLIENTE"
+        estado = "SERVIDOR MASTER DETECTADO" if self.es_servidor_master else "MODO CLIENTE"
         messagebox.showinfo("Información", f"Estado de la máquina:\n{estado}")
 
     def _configurar_estilos(self):
@@ -87,7 +87,7 @@ class VentanaPrincipal:
         
         titulo_label = tk.Label(
             titulo_frame,
-            text="🖥️ NFS Configurador Integral",
+            text="NFS Configurador Integral",
             bg=TemaColores.COLOR_FONDO_DARK,
             fg=TemaColores.COLOR_TEXTO_LIGHT,
             font=('Segoe UI', 16, 'bold'),
@@ -107,12 +107,12 @@ class VentanaPrincipal:
     def _crear_widgets_master(self):
         """Crea los widgets de la sección Master"""
         # --- Frame de preparación del sistema ---
-        prep_frame = ttk.LabelFrame(self.frame_master, text="⚙️ 1. Preparación del Sistema Master", padding="15")
+        prep_frame = ttk.LabelFrame(self.frame_master, text="1. Preparación del Sistema Master", padding="15")
         prep_frame.pack(fill="x", expand="no", padx=5, pady=8)
 
         btn_preparar_sistema = tk.Button(
             prep_frame, 
-            text="🔧 Instalar y Habilitar NFS",
+            text="Instalar y Habilitar NFS",
             command=self._preparar_sistema_master,
             bg=TemaColores.COLOR_BOTON_MASTER,
             fg=TemaColores.COLOR_TEXTO_LIGHT,
@@ -125,7 +125,7 @@ class VentanaPrincipal:
 
         btn_crear_dir = tk.Button(
             prep_frame,
-            text="📁 Crear /opt/data con Permisos",
+            text="Crear /opt/data con Permisos",
             command=self._crear_directorio_master,
             bg=TemaColores.COLOR_BOTON_SUCCESS,
             fg=TemaColores.COLOR_TEXTO_LIGHT,
@@ -137,7 +137,7 @@ class VentanaPrincipal:
         btn_crear_dir.pack(side="left", padx=8)
 
         # --- Frame de formulario de exportación ---
-        form_frame = ttk.LabelFrame(self.frame_master, text="📝 2. Formulario de Exportación", padding="15")
+        form_frame = ttk.LabelFrame(self.frame_master, text="2. Formulario de Exportación", padding="15")
         form_frame.pack(fill="x", expand="no", padx=5, pady=8)
 
         ttk.Label(form_frame, text="Carpeta a Exportar:").grid(row=0, column=0, sticky="w", pady=5, padx=5)
@@ -168,7 +168,7 @@ class VentanaPrincipal:
 
         btn_agregar = tk.Button(
             form_frame,
-            text="➕ Agregar y Aplicar",
+            text="Agregar y Aplicar",
             command=self._agregar_exportacion_master,
             bg=TemaColores.COLOR_BOTON_SUCCESS,
             fg=TemaColores.COLOR_TEXTO_LIGHT,
@@ -182,7 +182,7 @@ class VentanaPrincipal:
         form_frame.columnconfigure(1, weight=1)
 
         # --- Frame de configuraciones actuales ---
-        configs_frame = ttk.LabelFrame(self.frame_master, text="📋 3. Configuraciones Activas (/etc/exports)", padding="15")
+        configs_frame = ttk.LabelFrame(self.frame_master, text="3. Configuraciones Activas (/etc/exports)", padding="15")
         configs_frame.pack(fill="both", expand="yes", padx=5, pady=8)
 
         self.lista_configs_master = crear_listbox_personalizado(configs_frame, height=6)
@@ -197,7 +197,7 @@ class VentanaPrincipal:
         
         btn_refrescar = tk.Button(
             btn_frame,
-            text="🔄 Refrescar",
+            text="Refrescar",
             command=self._refrescar_lista_master,
             bg=TemaColores.COLOR_PRIMARY,
             fg=TemaColores.COLOR_TEXTO_LIGHT,
@@ -209,7 +209,7 @@ class VentanaPrincipal:
         
         btn_eliminar = tk.Button(
             btn_frame,
-            text="🗑️ Eliminar",
+            text="Eliminar",
             command=self._eliminar_exportacion_master,
             bg=TemaColores.COLOR_DANGER,
             fg=TemaColores.COLOR_TEXTO_LIGHT,
@@ -220,12 +220,12 @@ class VentanaPrincipal:
         btn_eliminar.pack(pady=5)
 
         # --- Frame de verificación ---
-        verif_frame = ttk.LabelFrame(self.frame_master, text="✓ 4. Verificación y Diagnóstico", padding="15")
+        verif_frame = ttk.LabelFrame(self.frame_master, text="4. Verificación y Diagnóstico", padding="15")
         verif_frame.pack(fill="x", expand="no", padx=5, pady=8)
         
         btn_verificar_exp = tk.Button(
             verif_frame,
-            text="📊 Exportaciones Activas",
+            text="Exportaciones Activas",
             command=self._verificar_exportaciones_master,
             bg=TemaColores.COLOR_INFO,
             fg=TemaColores.COLOR_TEXTO_LIGHT,
@@ -238,7 +238,7 @@ class VentanaPrincipal:
         
         btn_verificar_disco = tk.Button(
             verif_frame,
-            text="💾 Espacio en Disco",
+            text="Espacio en Disco",
             command=self._verificar_disco_master,
             bg=TemaColores.COLOR_WARNING,
             fg=TemaColores.COLOR_TEXTO_LIGHT,
@@ -254,7 +254,7 @@ class VentanaPrincipal:
     def _crear_widgets_cliente(self):
         """Crea los widgets de la sección Cliente"""
         # --- Frame de montaje ---
-        montaje_frame = ttk.LabelFrame(self.frame_cliente, text="🔗 1. Configuración del Cliente y Montaje", padding="15")
+        montaje_frame = ttk.LabelFrame(self.frame_cliente, text="1. Configuración del Cliente y Montaje", padding="15")
         montaje_frame.pack(fill="x", expand="no", padx=5, pady=8)
 
         ttk.Label(montaje_frame, text="IP del Master:").grid(row=0, column=0, sticky="w", pady=5, padx=5)
@@ -274,7 +274,7 @@ class VentanaPrincipal:
 
         btn_montar = tk.Button(
             montaje_frame,
-            text="⬆️ Montar",
+            text="Montar",
             command=self._montar_recurso_cliente,
             bg=TemaColores.COLOR_BOTON_SUCCESS,
             fg=TemaColores.COLOR_TEXTO_LIGHT,
@@ -287,7 +287,7 @@ class VentanaPrincipal:
         
         btn_desmontar = tk.Button(
             montaje_frame,
-            text="⬇️ Desmontar",
+            text="Desmontar",
             command=self._desmontar_recurso_cliente,
             bg=TemaColores.COLOR_WARNING,
             fg=TemaColores.COLOR_TEXTO_LIGHT,
@@ -301,12 +301,12 @@ class VentanaPrincipal:
         montaje_frame.columnconfigure(1, weight=1)
 
         # --- Frame de compartir archivos ---
-        share_frame = ttk.LabelFrame(self.frame_cliente, text="📤 2. Compartir Archivos", padding="15")
+        share_frame = ttk.LabelFrame(self.frame_cliente, text="2. Compartir Archivos", padding="15")
         share_frame.pack(fill="x", expand="no", padx=5, pady=8)
 
         btn_seleccionar = tk.Button(
             share_frame,
-            text="📂 Seleccionar Archivos para Compartir",
+            text="Seleccionar Archivos para Compartir",
             command=self._compartir_archivos_cliente,
             bg=TemaColores.COLOR_PRIMARY,
             fg=TemaColores.COLOR_TEXTO_LIGHT,
@@ -318,7 +318,7 @@ class VentanaPrincipal:
         btn_seleccionar.pack()
 
         # --- Frame de resultados y listado ---
-        result_frame = ttk.LabelFrame(self.frame_cliente, text="📋 3. Contenido del Recurso y Notificaciones", padding="15")
+        result_frame = ttk.LabelFrame(self.frame_cliente, text="3. Contenido del Recurso y Notificaciones", padding="15")
         result_frame.pack(fill="both", expand="yes", padx=5, pady=8)
 
         self.texto_resultados_cliente = tk.Text(
@@ -339,7 +339,7 @@ class VentanaPrincipal:
         
         btn_listar = tk.Button(
             result_frame,
-            text="📁 Listar Contenido del Recurso",
+            text="Listar Contenido del Recurso",
             command=self._listar_contenido_cliente,
             bg=TemaColores.COLOR_INFO,
             fg=TemaColores.COLOR_TEXTO_LIGHT,
@@ -395,7 +395,7 @@ class VentanaPrincipal:
             
             titulo = tk.Label(
                 ventana_verif,
-                text="📊 Exportaciones NFS Activas",
+                text="Exportaciones NFS Activas",
                 bg=TemaColores.COLOR_FONDO_DARK,
                 fg=TemaColores.COLOR_TEXTO_LIGHT,
                 font=('Segoe UI', 12, 'bold'),
@@ -427,7 +427,7 @@ class VentanaPrincipal:
             
             titulo = tk.Label(
                 ventana_verif,
-                text="💾 Espacio en Disco Disponible",
+                text="Espacio en Disco Disponible",
                 bg=TemaColores.COLOR_FONDO_DARK,
                 fg=TemaColores.COLOR_TEXTO_LIGHT,
                 font=('Segoe UI', 12, 'bold'),
@@ -479,4 +479,3 @@ class VentanaPrincipal:
         self.texto_resultados_cliente.delete("1.0", tk.END)
         self.texto_resultados_cliente.insert("1.0", resultado.get("message", "Acción completada."))
         self.texto_resultados_cliente.config(state="disabled")
-
