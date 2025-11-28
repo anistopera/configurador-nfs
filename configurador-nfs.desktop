@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Configurador NFS
+GenericName=NFS Configuration Tool
+Comment=Configurador gráfico para servidor NFS en OpenSUSE 15.6
+Exec=configurador-nfs
+Icon=network-server
+Terminal=false
+StartupNotify=true
+Categories=System;Settings;
+Keywords=nfs;server;network;configuration;opensuse;
+MimeType=
