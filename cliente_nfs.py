@@ -30,7 +30,7 @@ class ClienteNFS:
                 check=True,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
-                text=True
+                universal_newlines=True
             )
             return {"success": True, "stdout": result.stdout, "stderr": result.stderr}
         except subprocess.CalledProcessError as e:
@@ -136,3 +136,4 @@ class ClienteNFS:
             return {"success": True, "message": "✓ Recurso desmontado con éxito."}
         else:
             return {"success": False, "message": f"✗ Error al desmontar: {umount_result['stderr']}"}
+
