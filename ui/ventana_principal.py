@@ -1,11 +1,9 @@
 import tkinter as tk
 from tkinter import ttk, messagebox, filedialog
-import sys
-sys.path.insert(0, '..')
 from gestor_nfs import GestorNFS
 from cliente_nfs import ClienteNFS
 from utils.compatibilidad import es_servidor_master, verificar_permisos_administrador
-from temas import TemaColores, crear_listbox_personalizado
+from .temas import TemaColores, crear_listbox_personalizado
 
 
 class VentanaPrincipal:
@@ -481,3 +479,4 @@ class VentanaPrincipal:
         self.texto_resultados_cliente.delete("1.0", tk.END)
         self.texto_resultados_cliente.insert("1.0", resultado.get("message", "Acción completada."))
         self.texto_resultados_cliente.config(state="disabled")
+
